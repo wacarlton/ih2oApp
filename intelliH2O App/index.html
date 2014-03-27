@@ -11,7 +11,7 @@
     <script src="kendo/js/kendo.mobile.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
 
-    <script src="scripts/login.js"></script>
+    <script src="scripts/meter.js"></script>
     <script src="scripts/location.js"></script>
     <script src="scripts/weather.js"></script>
     <script src="scripts/app.js"></script>
@@ -38,55 +38,47 @@
             <h1>Welcome!</h1>
             <a id="skin-change" data-role="button" data-click="app.changeSkin">Flat</a>
             <p>
-                Telerik AppBuilder&trade; enables you to build cross-platform device applications regardless of your
-                    development platform by combining the convenience of a local development toolset with the
-                    power and flexibility of the cloud.
+                Welcome to intelliH2O!!!
             </p>
             <div class="img"></div>
         </div>
     </div>
 
     <!--Login-->
-    <div id="tabstrip-login"
+    <div id="tabstrip-meter"
         data-role="view"
-        data-title="Login"
-        data-model="app.loginService.viewModel">
+        data-title="Meter"
+        data-model="app.meterService.viewModel">
 
         <div class="view-content">
             <div class="logo"></div>
-            <h3 data-bind="invisible: isLoggedIn">Enter your credentials:</h3>
-            <h1 class="welcome" data-bind="visible: isLoggedIn">Welcome, <span data-bind="text: username"></span>!
-            </h1>
-            <div class="buttonArea">
-                <input type="submit" id="logout" data-role="button" data-bind="click: onLogout, visible: isLoggedIn" class="login-button" value="Logout" />
-            </div>
-
+            <h3>Meter Details</h3>
+            
             <form data-bind="events: { keyup: checkEnter }">
-                <ul data-role="listview" data-style="inset" data-bind="invisible: isLoggedIn">
+                <ul data-role="listview" data-style="inset">
                     <li>
                         <label>
-                            Username
-                                <input type="text" data-bind="value: username" />
-                        </label>
-                    </li>
-                    <li>
-                        <label>
-                            Password
-                                <input type="password" data-bind="value: password" />
+                            Meter Id <input type="text" data-bind="value: meterId" />
                         </label>
                     </li>
                 </ul>
 
                 <div class="buttonArea">
-                    <input type="submit" id="login" data-role="button" data-bind="click: onLogin, invisible: isLoggedIn" class="login-button" value="Login" />
+                    <input type="submit" id="meterDetails" data-role="button" data-bind="click: onSubmit" class="login-button" value="Get Meter Details" />
                 </div>
             </form>
+            <ul data-bind="visible: hasMeterData">Meter Data
+                <li id="meterDataId"></li>
+                <li id="meterDataVolume"></li>
+            </ul>
+            
+            
         </div>
 
     </div>
 
     <!--Location-->
-    <div id="tabstrip-location"
+    <div id="tabstrip-map"
         data-role="view"
         data-title="Location"
         data-init="app.locationService.initLocation"
@@ -110,7 +102,7 @@
     </div>
 
     <!--Weather-->
-    <div id="tabstrip-weather"
+    <div id="tabstrip-reports"
         data-role="view"
         data-title="Weather"
         data-model="app.weatherService.viewModel">
@@ -161,9 +153,9 @@
         <div data-role="footer">
             <div data-role="tabstrip">
                 <a href="#/" data-icon="home">Home</a>
-                <a href="#tabstrip-login" data-icon="contacts">Login</a>
-                <a href="#tabstrip-location" data-icon="search">Location</a>
-                <a href="#tabstrip-weather" data-icon="globe">Weather</a>
+                <a href="#tabstrip-meter" data-icon="contacts">Meter</a>
+                <a href="#tabstrip-map" data-icon="search">Map</a>
+                <a href="#tabstrip-reports" data-icon="globe">Reports</a>
             </div>
         </div>
     </div>
