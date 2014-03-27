@@ -51,26 +51,28 @@
         data-model="app.meterService.viewModel">
 
         <div class="view-content">
-            <div class="logo"></div>
-            <h3>Meter Details</h3>
-            
             <form data-bind="events: { keyup: checkEnter }">
                 <ul data-role="listview" data-style="inset">
                     <li>
                         <label>
-                            Meter Id <input type="text" data-bind="value: meterId" />
+                            Meter Id: <input type="text" data-bind="value: meterId" />                            
                         </label>
-                    </li>
+                    </li>                     
                 </ul>
-
                 <div class="buttonArea">
-                    <input type="submit" id="meterDetails" data-role="button" data-bind="click: onSubmit" class="login-button" value="Get Meter Details" />
+                    <input type="submit" id="meterDetails" data-role="button" data-bind="click: onSubmit" class="" value="Get Details" />
+                    <input type="button" data-role="button" data-bind="click: onClear" class="" value="Clear" />
                 </div>
             </form>
-            <ul data-bind="visible: hasMeterData">Meter Data
-                <li id="meterDataId"></li>
-                <li id="meterDataVolume"></li>
-            </ul>
+            <div>               
+                <ul data-bind="visible: hasMeterData" data-role="listview" data-style="inset">
+                    <li>Meter Id: <span id="meterDataId"></span></li>
+                    <li>Address: <span id="meterDataAddress"></span></li>
+                    <li>Total Volume: <span id="meterDataVolume"></span></li>
+                    <li>Temperature: <span id="meterDataTemperature"></span></li>
+                    <li>Pressure: <span id="meterDataPressure"></span></li>
+                </ul> 
+            </div>
             
             
         </div>
