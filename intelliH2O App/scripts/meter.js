@@ -99,5 +99,19 @@ function meterDataViewSelect() {
 }
 
 function valveChange(e) {
-    alert("Valve " + (e.checked ? "opened" : "closed"));
+    var meterId = app.meterService.viewModel.meterId;
+    var action = e.checked ? "open" : "close";
+    $.ajax({
+        type: 'GET',
+        url: 'http://qa.intellih2o.com/swma/valve/' + meterId + '/' + action, 
+        dataType: 'jsonp',
+        success: function(data) {
+            navigator.notification.alert("Valve " + action + " command is queued!",
+                    function () { }, "The operation will finish in a few minutes.", 'OK');
+        },
+        error: function(e) {
+            navigator.notification.alert("Valve " + action + " operation failed!",
+                    function () { }, "Please try later.", 'OK');
+        }
+    });
 }
