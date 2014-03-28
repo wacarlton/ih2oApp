@@ -39,8 +39,7 @@
             <a id="skin-change" data-role="button" data-click="app.changeSkin">Flat</a>
             <p>
                 Welcome to intelliH2O App!!!
-            </p>
-            <div class="imgih2o"></div>
+            </p>            
         </div>
     </div>
 
@@ -52,13 +51,11 @@
 
         <div class="view-content">
             <form data-bind="events: { keyup: checkEnter }">
-                <ul data-role="listview" data-style="inset">
-                    <li>
-                        <label>
-                            Meter Id: <input type="text" data-bind="value: meterId" />                            
-                        </label>
-                    </li>                     
-                </ul>
+                <div class="meterArea">
+                    <label>
+                       <input type="text" data-bind="value: meterId" placeholder="Meter Id" />                            
+                    </label>
+                </div>
                 <div class="buttonArea">
                     <input type="button" id="btnScan" data-role="button" data-icon="star" data-inline="true" data-bind="click: onScan" class="" value="Scan" />  
                     <input type="submit" id="meterDetails" data-role="button" data-icon="search" data-bind="click: onSubmit" class="" value="Get Details" />
@@ -148,8 +145,10 @@
 
         <!--Header-->
         <div data-role="header">
-            <div data-role="navbar">
-                <span data-role="view-title"></span>
+            <div data-role="navbar">                
+                <span id="title">
+                   <img src="styles/images/ih2o.png" class="ih2oLogo" /> 
+                </span>
             </div>
         </div>
 
