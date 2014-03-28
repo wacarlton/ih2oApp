@@ -32,17 +32,19 @@ body, html {
 
 .meterArea {
     text-align: center;
-    margin-top: 20%;
-    margin-bottom: 10%;
+    padding-top: 10px;
 }
 
-.meterArea input {
-    width: 200px;
+.meterArea input[type="text"] {
+    width: 170px;
     -moz-border-radius: 7px;
     border-radius: 7px;
     border: solid 1px lightgrey; 
     padding: 5px;
-    height: 30px;
+}
+
+.meterArea input {
+  	height: 30px;  
 }
 
 #meterdata-buttongroup {
@@ -77,6 +79,7 @@ body, html {
 /* BUTTON STYLES*/
 .buttonArea {
     text-align: center;
+    padding-top: 10px;
 }
 
 .login-button {

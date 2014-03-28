@@ -50,24 +50,19 @@
         data-model="app.meterService.viewModel">
 
         <div class="view-content">
-            <form data-bind="events: { keyup: checkEnter }, invisible: hasMeterData">
+            <form data-bind="events: { keyup: checkEnter }">
                 <div class="meterArea">
                     <label>
-                       <input type="text" data-bind="value: meterId" placeholder="Meter Id" data-clear-btn="true" />                            
+                       <input type="text" id="meterId" data-bind="value: meterId" placeholder="Meter Id" data-clear-btn="true" />                            
                     </label>
-                </div>
-                <div class="buttonArea">
                     <input type="button" id="btnScan" data-role="button" data-icon="star" data-inline="true" data-bind="click: onScan" value="Scan" />  
-                    <input type="submit" id="meterDetails" data-role="button" data-icon="search" data-bind="click: onSubmit" value="Get Details" />
-			        <input type="button" id="btnClear" data-role="button" data-bind="click: onClear" value="Clear" />                    
+                    <input type="submit" id="meterDetails" data-role="button" data-icon="search" data-bind="click: onSubmit" value="Get Data" />
+			        <!-- <input type="button" id="btnClear" data-role="button" data-bind="click: onClear" value="Clear" />    -->                
                 </div>
                 <input type="hidden" id="meterDataLat"/>
                 <input type="hidden" id="meterDataLng"/>
             </form>
             <div data-bind="visible: hasMeterData">     
-                <h3 data-align="center">
-                    Meter Id - <span id="meterDataTitle"></span>
-                </h3>
                 <div>                    
                     <div id="meterdata-buttongroup">
                         <ul data-role="buttongroup" data-index="0" data-select="meterDataViewSelect">
@@ -92,14 +87,16 @@
                             </ul>  
                         </div>
                         <div style="display:none" class="meterdata">
-                            
+                            <ul data-role="listview" data-style="inset">
+                                <li>Change Valve Status: <input id="valveSwitch" data-role="switch" data-change="valveChange" />
+                            </ul>
                         </div>                          
                         <div style="display:none" class="meterdata">
                             Coming Soon!
                         </div>                        
                     </div>
                     <div class="buttonArea">
-                       <input type="button" data-align="right" data-role="button" data-bind="click: onClear" value="Get New Meter Details" />                                         
+                        <input type="button" id="btnClear" data-role="button" data-bind="click: onClear, visible: hasMeterData" value="Clear" />                     
                     </div>
                     
                 </div>              

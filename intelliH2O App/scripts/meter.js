@@ -21,7 +21,7 @@
                 url: 'http://qa.intellih2o.com/swma/mi/' + meterId,
                 dataType: 'jsonp',
                 success: function(data) {
-                    $("#meterDataTitle").text(data.meter.meterId)            
+                    that.set("meterId", data.meter.meterId);      
                     $('#meterDataId').text(data.meter.meterId);
                     $('#meterDataAddress').text(data.customer.address);
                     $('#meterDataVolume').text(data.meter.totalVolume);
@@ -93,4 +93,8 @@
 function meterDataViewSelect() {
     var meterDataViews = this.element.parent().find(".meterdata");
     meterDataViews.hide().eq(this.selectedIndex).show();
+}
+
+function valveChange(e) {
+    alert("Valve " + (e.checked ? "opened" : "closed"));
 }
