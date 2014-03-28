@@ -37,12 +37,35 @@
             that.set("hasMeterData", true);
         },
 
+        onScan: function () {         
+            var that = this;
+            if (window.navigator.simulator === true) {
+                alert("Not Supported in Simulator.");
+            }
+            else {
+                cordova.plugins.barcodeScanner.scan(
+                    function (result) {
+                        if (!result.cancelled) {
+                             
+                            var fmt = result.format;
+                            var meterId = result.text;
+                            that.set("meterId", meterId);
+                            that.onSubmit();    
+                        }
+                    },
+                    function (error) {
+                        console.log("Scanning failed: " + error);
+                    });
+            }
+       },
+        
         onClear: function () {
             var that = this;
 
             that.clearForm();
             that.set("hasMeterData", false);
         },
+        
 
         clearForm: function () {
             var that = this;
