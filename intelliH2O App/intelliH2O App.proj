@@ -16,6 +16,7 @@
     <BundleVersion>1.0</BundleVersion>
     <DisplayName />
     <iOSDisplayName />
+    <iOSBackgroundMode>location</iOSBackgroundMode>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\Telerik\ICE\Tools\Mobile\MobileTools.targets" />
 </Project>

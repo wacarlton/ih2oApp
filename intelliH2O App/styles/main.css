@@ -28,7 +28,7 @@ body, html {
     text-align: center;
 }
 
-/* METER TAB STYLES */
+/* METER DATA STYLES */
 
 .meterArea {
     text-align: center;
@@ -43,6 +43,10 @@ body, html {
     border: solid 1px lightgrey; 
     padding: 5px;
     height: 30px;
+}
+
+#meterdata-buttongroup {
+    padding: 20px;
 }
 
 /* IMAGE STYLES*/

@@ -16,12 +16,12 @@
 
                 return;
             }
-            
             $.ajax({
                 type: 'GET',
                 url: 'http://qa.intellih2o.com/swma/mi/' + meterId,
                 dataType: 'jsonp',
                 success: function(data) {
+                    $("#meterDataTitle").text(data.meter.meterId)            
                     $('#meterDataId').text(data.meter.meterId);
                     $('#meterDataAddress').text(data.customer.address);
                     $('#meterDataVolume').text(data.meter.totalVolume);
@@ -30,6 +30,7 @@
                     $('#meterDataValve').text(data.meter.valveStatus);
                     $('#meterDataLat').text(data.meter.lat);
                     $('#meterDataLng').text(data.meter.lng);
+                    that.set("hasMeterData", true);
                 },
                 error: function(e) {
                    alert(e);
@@ -37,7 +38,6 @@
             });
 
             
-            that.set("hasMeterData", true);
         },
 
         onScan: function () {         
@@ -89,3 +89,8 @@
         viewModel: new MeterViewModel()
     };
 })(window);
+
+function meterDataViewSelect() {
+    var meterDataViews = this.element.parent().find(".meterdata");
+    meterDataViews.hide().eq(this.selectedIndex).show();
+}
