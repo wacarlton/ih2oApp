@@ -70,9 +70,6 @@
                                 Details
                             </li>
                             <li>
-                                Valve Change
-                            </li>
-                            <li>
                                 Install/Replace
                             </li>
                         </ul>
@@ -83,14 +80,11 @@
                                 <li>Total Volume: <span id="meterDataVolume"></span></li>
                                 <li>Temperature: <span id="meterDataTemperature"></span></li>
                                 <li>Pressure: <span id="meterDataPressure"></span></li>
-                                <li>Valve: <span id="meterDataValve"></span></li>
+                                <li>Valve: <span id="meterDataValve"></span>
+                                    <input id="valveSwitch" data-role="switch" data-change="valveChange" />
+                               </li>
                             </ul>  
                         </div>
-                        <div style="display:none" class="meterdata">
-                            <ul data-role="listview" data-style="inset">
-                                <li>Change Valve Status: <input id="valveSwitch" data-role="switch" data-change="valveChange" />
-                            </ul>
-                        </div>                          
                         <div style="display:none" class="meterdata">
                             Coming Soon!
                         </div>                        

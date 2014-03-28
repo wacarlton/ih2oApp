@@ -28,6 +28,9 @@
                     $('#meterDataTemperature').text(data.meter.temperatureInFahrenheit );
                     $('#meterDataPressure').text(data.meter.pressure);
                     $('#meterDataValve').text(data.meter.valveStatus);
+                    if (data.meter.valveStatus == "Open") {
+                        $("#valveSwitch").data("kendoMobileSwitch").check(true)
+                    }
                     $('#meterDataLat').text(data.meter.lat);
                     $('#meterDataLng').text(data.meter.lng);
                     that.set("hasMeterData", true);
