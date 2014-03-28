@@ -24,7 +24,30 @@ body, html {
     font-size: 1em;
 }
 
+#title: {
+    text-align: center;
+}
+
+/* METER TAB STYLES */
+
+.meterArea {
+    text-align: center;
+    margin-top: 20%;
+    margin-bottom: 10%;
+}
+
+.meterArea input {
+    width: 125px;
+}
+
 /* IMAGE STYLES*/
+
+.ih2oLogo {    
+    width: 125px;
+    height: 32px;
+    margin-top: 0.3em;
+}
+
 .imgih2o {
     background-image: url(../styles/images/ih2o.png);
     background-repeat: no-repeat;
