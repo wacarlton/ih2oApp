@@ -60,9 +60,9 @@
                     </li>                     
                 </ul>
                 <div class="buttonArea">
-                    <input type="button" id="btnScan" data-role="button" data-bind="click: onScan" class="" value="Scan" />
-                    <input type="submit" id="meterDetails" data-role="button" data-bind="click: onSubmit" class="" value="Get Details" />
-			                    <input type="button" id="btnClear" data-role="button" data-bind="click: onClear" class="" value="Clear" />
+                    <input type="button" id="btnScan" data-role="button" data-icon="star" data-inline="true" data-bind="click: onScan" class="" value="Scan" />  
+                    <input type="submit" id="meterDetails" data-role="button" data-icon="search" data-bind="click: onSubmit" class="" value="Get Details" />
+			        <input type="button" id="btnClear" data-role="button" data-bind="click: onClear" class="" value="Clear" />
                 </div>
             </form>
             <div>               
@@ -72,11 +72,10 @@
                     <li>Total Volume: <span id="meterDataVolume"></span></li>
                     <li>Temperature: <span id="meterDataTemperature"></span></li>
                     <li>Pressure: <span id="meterDataPressure"></span></li>
+                    <li>Valve: <span id="meterDataValve"></span></li>
                 </ul> 
             </div>
-            
-            
-        </div>
+         </div>
 
     </div>
 

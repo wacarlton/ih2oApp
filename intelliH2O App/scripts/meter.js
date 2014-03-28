@@ -27,6 +27,7 @@
                     $('#meterDataVolume').text(data.meter.totalVolume);
                     $('#meterDataTemperature').text(data.meter.temperatureInFahrenheit );
                     $('#meterDataPressure').text(data.meter.pressure);
+                    $('#meterDataValve').text(data.meter.valveStatus);
                 },
                 error: function(e) {
                    alert(e);
@@ -45,8 +46,7 @@
             else {
                 cordova.plugins.barcodeScanner.scan(
                     function (result) {
-                        if (!result.cancelled) {
-                             
+                        if (!result.cancelled) {                             
                             var fmt = result.format;
                             var meterId = result.text;
                             that.set("meterId", meterId);

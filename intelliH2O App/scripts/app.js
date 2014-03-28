@@ -3,6 +3,7 @@
         app = global.app = global.app || {};
 
     document.addEventListener('deviceready', function () {
+         
         navigator.splashscreen.hide();
     }, false);
 
