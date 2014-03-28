@@ -21,12 +21,12 @@
             navigator.geolocation.getCurrentPosition(
                 function (position) {
                     position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                     map.panTo(position);
-                     that._putMarker(position);
+                    map.panTo(position);
+                    that._putMarker(position);
                     // that._putMeter();
-        //            if (_lastMarker != null) {
-        //                map.panTo(_lastMarker.getPosition());
-        //            }
+   //                 if (_lastMarker != null) {
+   //                     map.panTo(_lastMarker.getPosition());
+   //                 }
                     that._isLoading = false;
                     that.hideLoading();
                 },
