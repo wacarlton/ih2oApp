@@ -28,6 +28,8 @@
                     $('#meterDataTemperature').text(data.meter.temperatureInFahrenheit );
                     $('#meterDataPressure').text(data.meter.pressure);
                     $('#meterDataValve').text(data.meter.valveStatus);
+                    $('#meterDataLat').text(data.meter.lat);
+                    $('#meterDataLng').text(data.meter.lng);
                 },
                 error: function(e) {
                    alert(e);

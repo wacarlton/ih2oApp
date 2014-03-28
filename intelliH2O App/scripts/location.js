@@ -7,7 +7,7 @@
     LocationViewModel = kendo.data.ObservableObject.extend({
         _lastMarker: null,
         _isLoading: false,
-
+        _meterMarker: null,
         address: "",
         isGoogleMapsInitialized: false,
 
@@ -21,15 +21,18 @@
             navigator.geolocation.getCurrentPosition(
                 function (position) {
                     position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-                    map.panTo(position);
-                    that._putMarker(position);
-
+                     map.panTo(position);
+                     that._putMarker(position);
+                    // that._putMeter();
+        //            if (_lastMarker != null) {
+        //                map.panTo(_lastMarker.getPosition());
+        //            }
                     that._isLoading = false;
                     that.hideLoading();
                 },
                 function (error) {
                     //default map coordinates
-                    position = new google.maps.LatLng(43.459336, -80.462494);
+                    position = new google.maps.LatLng(33.083852, -96.858456);
                     map.panTo(position);
 
                     that._isLoading = false;
@@ -75,18 +78,26 @@
             app.application.hideLoading();
         },
 
-        _putMarker: function (position) {
+        _putMeter: function (position) {
+            var that = this;
+			var lat = that.get("meterDataLat"); 
+            var lng = that.get("meterDataLng");
+            if (that._lastMarker !== null && that._lastMarker !== undefined) {
+                that._lastMarker.setMap(null);
+            }
+            var position = new google.maps.LatLng(lat, lng);
+            that._lastMarker = new google.maps.Marker({ map: map, position: position });
+        },
+        
+         _putMarker: function (position) {
             var that = this;
 
             if (that._lastMarker !== null && that._lastMarker !== undefined) {
                 that._lastMarker.setMap(null);
             }
 
-            that._lastMarker = new google.maps.Marker({
-                map: map,
-                position: position
-            });
-        }
+            that._lastMarker = new google.maps.Marker({ map: map, position: position });
+        },
     });
 
     app.locationService = {
