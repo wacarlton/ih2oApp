@@ -82,13 +82,13 @@
             var that = this;
             var lat = app.meterService.viewModel.meterLat;
             var lng = app.meterService.viewModel.meterLng;
-//			var lat = that.get("meterDataLat"); 
-//            var lng = that.get("meterDataLng");
+
             if (that._lastMeter !== null && that._lastMeter !== undefined) {
                 that._lastMeter.setMap(null);
             }
             var position = new google.maps.LatLng(lat, lng);
-            that._lastMeter = new google.maps.Marker({ map: map, position: position });
+            var image = 'styles/images/waterdrop.png';
+            that._lastMeter = new google.maps.Marker({ map: map, position: position, icon: image });
         },
         
          _putMarker: function (position) {
