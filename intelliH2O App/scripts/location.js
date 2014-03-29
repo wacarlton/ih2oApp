@@ -23,10 +23,10 @@
                     position = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
                     map.panTo(position);
                     that._putMarker(position);
-                    // that._putMeter();
-   //                 if (_lastMarker != null) {
-   //                     map.panTo(_lastMarker.getPosition());
-   //                 }
+                    that._putMeter();
+                     if (that._lastMeter != null) {
+                         map.panTo(that._lastMeter.getPosition());
+                    }
                     that._isLoading = false;
                     that.hideLoading();
                 },
@@ -80,13 +80,15 @@
 
         _putMeter: function (position) {
             var that = this;
-			var lat = that.get("meterDataLat"); 
-            var lng = that.get("meterDataLng");
-            if (that._lastMarker !== null && that._lastMarker !== undefined) {
-                that._lastMarker.setMap(null);
+            var lat = app.meterService.viewModel.meterLat;
+            var lng = app.meterService.viewModel.meterLng;
+//			var lat = that.get("meterDataLat"); 
+//            var lng = that.get("meterDataLng");
+            if (that._lastMeter !== null && that._lastMeter !== undefined) {
+                that._lastMeter.setMap(null);
             }
             var position = new google.maps.LatLng(lat, lng);
-            that._lastMarker = new google.maps.Marker({ map: map, position: position });
+            that._lastMeter = new google.maps.Marker({ map: map, position: position });
         },
         
          _putMarker: function (position) {
