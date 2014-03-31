@@ -30,6 +30,8 @@
                     $('#meterDataValve').text(data.meter.valveStatus);
                     if (data.meter.valveStatus == "Open") {
                         $("#valveSwitch").data("kendoMobileSwitch").check(true)
+                    } else {
+                        $("#valveSwitch").data("kendoMobileSwitch").check(false)
                     }
                     $('#meterDataLat').text(data.meter.lat);
                     $('#meterDataLng').text(data.meter.lng);
@@ -66,8 +68,8 @@
         
         onClear: function () {
             var that = this;
-
-            that.clearForm();
+            app.application.scroller().reset();
+			that.clearForm();
             that.set("hasMeterData", false);
         },
         

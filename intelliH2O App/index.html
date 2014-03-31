@@ -53,11 +53,11 @@
             <form data-bind="events: { keyup: checkEnter }">
                 <div class="meterArea">
                     <label>
-                       <input type="text" id="meterId" data-bind="value: meterId" placeholder="Meter Id" data-clear-btn="true" />                            
+                       <input type="text" id="meterId" data-bind="value: meterId" placeholder="Meter Id" />                            
                     </label>
                     <input type="button" id="btnScan" data-role="button" data-icon="star" data-inline="true" data-bind="click: onScan" value="Scan" />  
                     <input type="submit" id="meterDetails" data-role="button" data-icon="search" data-bind="click: onSubmit" value="Get Data" />
-			        <!-- <input type="button" id="btnClear" data-role="button" data-bind="click: onClear" value="Clear" />    -->                
+			                     
                 </div>
                 <input type="hidden" id="meterDataLat"/>
                 <input type="hidden" id="meterDataLng"/>
@@ -88,13 +88,14 @@
                         <div style="display:none" class="meterdata">
                             Coming Soon!
                         </div>                        
-                    </div>
-                    <div class="buttonArea">
-                        <input type="button" id="btnClear" data-role="button" data-bind="click: onClear, visible: hasMeterData" value="Clear" />                     
-                    </div>
-                    
+                    </div>                    
                 </div>              
             </div>
+            
+            <div class="buttonArea">
+                <a href="#tabstrip-meter" data-role="button" id="btnClear" data-bind="click: onClear, visible: hasMeterData">Clear</a>
+            </div>
+
          </div>
 
     </div>
