@@ -1,10 +1,14 @@
 (function (global) {
     var MeterViewModel,
         app = global.app = global.app || {};
+        _serverHost = localStorage.serverHost ;
 
     MeterViewModel = kendo.data.ObservableObject.extend({
         hasMeterData: false,
         meterId: "",
+        meterLat: "",
+        meterLng: "",
+        meterValve: "",
 
         onSubmit: function () {
             var that = this,
@@ -16,9 +20,16 @@
 
                 return;
             }
+            if (_serverHost == null || _serverHost == undefined) {
+                navigator.notification.alert("Server not defined",
+                    function () { }, "Fetching Details failed", 'OK');
+
+                _serverHost = 'http://qa.intellih2o.com';
+                localStorage.serverHost = _serverHost;
+            }
             $.ajax({
                 type: 'GET',
-                url: 'http://qa.intellih2o.com/swma/mi/' + meterId,
+                url: _serverHost + '/swma/mi/' + meterId,
                 dataType: 'jsonp',
                 success: function(data) {
                     that.set("meterId", data.meter.meterId);      
@@ -28,17 +39,21 @@
                     $('#meterDataTemperature').text(data.meter.temperatureInFahrenheit );
                     $('#meterDataPressure').text(data.meter.pressure);
                     $('#meterDataValve').text(data.meter.valveStatus);
-                    if (data.meter.valveStatus == "Open") {
+                    that.set("meterValve", data.meter.valveStatus);
+                    if (data.meter.valveStatus.indexOf("Open") == 0) {
                         $("#valveSwitch").data("kendoMobileSwitch").check(true)
                     } else {
                         $("#valveSwitch").data("kendoMobileSwitch").check(false)
                     }
                     $('#meterDataLat').text(data.meter.lat);
+                     that.set("meterLat", data.meter.lat);
+                     that.set("meterLng", data.meter.lng);
                     $('#meterDataLng').text(data.meter.lng);
                     that.set("hasMeterData", true);
                 },
                 error: function(e) {
-                   alert(e);
+                    navigator.notification.alert(e,
+                    function () { }, "Fetching Details failed", 'OK');
                 }
             });
 
@@ -105,7 +120,7 @@ function valveChange(e) {
     var action = e.checked ? "open" : "close";
     $.ajax({
         type: 'GET',
-        url: 'http://qa.intellih2o.com/swma/valve/' + meterId + '/' + action, 
+        url: _serverHost + '/swma/valve/' + meterId + '/' + action, 
         dataType: 'jsonp',
         success: function(data) {
             navigator.notification.alert("Valve " + action + " command is queued!",
